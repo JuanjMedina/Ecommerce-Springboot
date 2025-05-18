@@ -1,6 +1,5 @@
 package com.dev.ecomercespringboot.model;
 
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,20 +9,20 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Setter
+import java.util.Date;
+
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Product {
+public class Order {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private String name;
-    private String description;
-    private String imageUrl;
-    private double price;
-    private int stock;
-
+    private String number;
+    private Date date_created;
+    private Date date_received;
+    private double total;
 
 }
