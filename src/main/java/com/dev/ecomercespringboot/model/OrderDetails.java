@@ -1,9 +1,6 @@
 package com.dev.ecomercespringboot.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,5 +19,11 @@ public class OrderDetails {
     private double quantity;
     private double price;
     private double total;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Order order;
+
+    @OneToOne()
+    private Product product;
 
 }

@@ -1,9 +1,6 @@
 package com.dev.ecomercespringboot.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,6 +13,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "Orders")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,5 +22,12 @@ public class Order {
     private Date date_created;
     private Date date_received;
     private double total;
+
+    @ManyToOne
+    private User user;
+
+    @OneToOne(mappedBy = "order")
+    private OrderDetails orderDetails;
+
 
 }
